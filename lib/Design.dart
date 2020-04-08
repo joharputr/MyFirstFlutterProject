@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Count.dart';
 
 void main() => runApp(Design());
 
@@ -107,24 +108,57 @@ final leftColumn = Container(
 
 class _MyAppState extends State<Design> {
   Random random = Random();
+  int _currentIndex = 0;
+  static final container = Container(
+    child: InkWell(
+      onTap: () {
+        print("Container pressed");
+      },
+      child: Container(
+        child: leftColumn,
+      ),
+    ),
+  );
+
+  var tabs = [
+    Center(child: Text("home")),
+    Center(child: Text("alarm")),
+    Center(child: Text("stars")),
+    container
+  ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-              title: Center(
-                child: Text("Flutter",
-                    style: TextStyle(
-                        fontFamily: "CrashLandingBB", fontSize: 20)),
-              )),
-          body: InkWell(
-            onTap: () {
-              print("Container pressed");
-            },
-            child: Container(
-              child: leftColumn,
-            ),
-          )),);
+              title: Text("Flutter",
+                style: TextStyle(fontFamily: "CrashLandingBB", fontSize: 20)),
+          ),
+          body: tabs[_currentIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.blue,
+            selectedItemColor: Colors.white,
+            currentIndex: _currentIndex,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home), title: Text("home")),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.access_alarms), title: Text("alarm")),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.star), title: Text("stars")),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), title: Text("account"))
+            ],
+            onTap: _onItemTapped,
+          )),
+    );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      this._currentIndex = index;
+    });
   }
 }

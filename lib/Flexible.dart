@@ -49,7 +49,6 @@ class GaTauApa extends State<FlexibleApp> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             testFlexible,
-            testFlexible
           ],
         )
     );
