@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Count.dart';
 
 void main() => runApp(Design());
 
@@ -132,7 +131,7 @@ class _MyAppState extends State<Design> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-              title: Text("Flutter",
+            title: Text("Flutter",
                 style: TextStyle(fontFamily: "CrashLandingBB", fontSize: 20)),
           ),
           body: tabs[_currentIndex],

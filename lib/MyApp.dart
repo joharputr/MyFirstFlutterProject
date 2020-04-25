@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Design.dart';
@@ -15,7 +16,35 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Android Studio"),
+          title: Text(
+            "Android Studio",
+            style: TextStyle(color: Colors.white),
+          ),
+          leading: Icon(
+            Icons.directions_walk,
+            color: Colors.white,
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.build),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {},
+            )
+          ],
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Color(0xFF8C9EFF), Color(0xFFFF8A80)],
+                    begin: FractionalOffset.topLeft,
+                    end: FractionalOffset.bottomRight),
+                image: DecorationImage(
+                    image: AssetImage("assets/rafan.jpeg"),
+                    fit: BoxFit.none,
+                    repeat: ImageRepeat.repeat)),
+          ),
         ),
         body: Center(
           child: GestureDetector(
@@ -27,13 +56,9 @@ class MyApp extends StatelessWidget {
               width: 160.0 + random.nextDouble(),
               height: 150,
               child: Center(
-                  child: Text(
-                "apa lo coeg",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                    fontStyle: FontStyle.italic),
+                  child: Image(
+                image: AssetImage("assets/rafan.jpeg"),
+                fit: BoxFit.fill,
               )),
             ),
           ),
