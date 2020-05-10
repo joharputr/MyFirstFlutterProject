@@ -119,10 +119,32 @@ class _MyAppState extends State<Design> {
     ),
   );
 
+  static final cardview = Container(
+    child: ListView(
+      children: <Widget>[
+        Card(
+          elevation: 5,
+          child: Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(5),
+                child: Icon(Icons.directions_walk),
+              ),
+              Text(
+                "MAMA",
+                style: TextStyle(color: Colors.blue),
+              )
+            ],
+          ),
+        )
+      ],
+    ),
+  );
+
   var tabs = [
     Center(child: Text("home")),
     Center(child: Text("alarm")),
-    Center(child: Text("stars")),
+    cardview,
     container
   ];
 

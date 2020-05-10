@@ -37,54 +37,38 @@ class _CountState extends State<Count> {
       appBar: AppBar(
         title: Center(child: Text("Coba Count")),
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              child: Text(
-                "Hai coba font",
-                style: TextStyle(fontFamily: "CrashLandingBB", fontSize: 30),
-              ),
-            ),
-            Text(
-              number.toString(),
-              style: TextStyle(fontSize: 20),
-            ),
-            RaisedButton(
-              child: Text(
-                "tekan bos",
-                style: TextStyle(fontFamily: "Bangers-Regular"),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Design()),
-                );
-                setState(() {
-                  number++;
-                });
-              },
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "Test ROdfdfw",
-                  style: TextStyle(fontStyle: FontStyle.normal),
+      body: Center(
+        child: Container(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(bottom: 20),
+                child: Text(
+                  "Hai coba font",
+                  style: TextStyle(fontFamily: "CrashLandingBB", fontSize: 30),
                 ),
-                Text(
-                  "Test Vertical",
-                  style: TextStyle(fontStyle: FontStyle.normal),
+              ),
+              Text(
+                number.toString(),
+                style: TextStyle(fontSize: 20),
+              ),
+              RaisedButton(
+                child: Text(
+                  "tekan bos",
+                  style: TextStyle(fontFamily: "Bangers-Regular"),
                 ),
-                Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                )
-              ],
-            ),
-          ],
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Design()),
+                  );
+                  setState(() {
+                    number++;
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

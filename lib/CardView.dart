@@ -1,16 +1,15 @@
-import 'dart:math';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Design.dart';
 
 void main() {
-  runApp(MaterialApp(home: MyApp()));
+  runApp(MaterialApp(home: CardView()));
 }
 
-class MyApp extends StatelessWidget {
-  Random random = Random();
+class CardView extends StatefulWidget {
+  @override
+  _CardViewState createState() => _CardViewState();
+}
 
+class _CardViewState extends State<CardView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,9 +26,7 @@ class MyApp extends StatelessWidget {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.build),
-              onPressed: () {
-                _navigateToNextScreen(context);
-              },
+              onPressed: () {},
             ),
             IconButton(
               icon: Icon(Icons.person),
@@ -48,29 +45,7 @@ class MyApp extends StatelessWidget {
                     repeat: ImageRepeat.repeat)),
           ),
         ),
-        body: Center(
-          child: GestureDetector(
-            onTap: () {
-              _navigateToNextScreen(context);
-            },
-            child: Container(
-              color: Colors.red,
-              width: 160.0 + random.nextDouble(),
-              height: 150,
-              child: Center(
-                  child: Image(
-                image: AssetImage("assets/rafan.jpeg"),
-                fit: BoxFit.fill,
-              )),
-            ),
-          ),
-        ),
       ),
     );
-  }
-
-  void _navigateToNextScreen(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => Design()));
   }
 }
