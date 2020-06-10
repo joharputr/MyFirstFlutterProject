@@ -2,6 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Count.dart';
+import 'package:flutter_app/api/UI/GetListActivity.dart';
+import 'package:flutter_app/api/UI/Post_Activity.dart';
 
 void main() => runApp(Design());
 
@@ -141,12 +144,7 @@ class _MyAppState extends State<Design> {
     ),
   );
 
-  var tabs = [
-    Center(child: Text("home")),
-    Center(child: Text("alarm")),
-    cardview,
-    container
-  ];
+  var tabs = [GetListActivity(), Count(), Post_Activity()];
 
   @override
   Widget build(BuildContext context) {
@@ -164,13 +162,11 @@ class _MyAppState extends State<Design> {
             currentIndex: _currentIndex,
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home), title: Text("home")),
+                  icon: Icon(Icons.home), title: Text("List")),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.access_alarms), title: Text("alarm")),
+                  icon: Icon(Icons.access_alarms), title: Text("Count")),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.star), title: Text("stars")),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), title: Text("account"))
+                  icon: Icon(Icons.person), title: Text("Post"))
             ],
             onTap: _onItemTapped,
           )),

@@ -34,8 +34,7 @@ class UserJsonObject {
     return false;
   }
 
-
-  static Future<List<UserJsonObject>> tesUserArray() async{
+  static Future<List<UserJsonObject>> testJsonObject() async{
     String apiURL = "https://jsonplaceholder.typicode.com/albums";
     var response = await http.get(apiURL);
     var jsonObject = json.decode(response.body);

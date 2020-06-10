@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/api/model/get_model.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
-void main() => runApp(getListActivity());
+void main() => runApp(GetListActivity());
 
-class getListActivity extends StatefulWidget {
+class GetListActivity extends StatefulWidget {
   @override
   _getDataState createState() => _getDataState();
 }
 
-class _getDataState extends State<getListActivity> {
+class _getDataState extends State<GetListActivity> {
   Future<List<User>> getListUsers;
 
   @override
@@ -76,8 +76,8 @@ class _getDataState extends State<getListActivity> {
                       } else {
                         return noDataView("Something went wrong");
                       }
-                      break;
                     }
+                    break;
                   case ConnectionState.none:
                     {}
                 }

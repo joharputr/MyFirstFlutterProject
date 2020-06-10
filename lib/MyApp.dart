@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Design.dart';
+import 'package:flutter_app/Main.dart';
 
 void main() {
   runApp(MaterialApp(home: MyApp()));

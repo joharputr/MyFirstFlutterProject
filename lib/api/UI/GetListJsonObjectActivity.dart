@@ -23,7 +23,7 @@ class _getDataState extends State<GetListJsonObjectActivity> {
         setState(() {
           // calling API to show the data
           // you can also do it with any button click.
-          getListUsers = UserJsonObject.tesUserArray();
+          getListUsers = UserJsonObject.testJsonObject();
         });
       } else {
         /*Display dialog with no internet connection message*/
@@ -41,52 +41,56 @@ class _getDataState extends State<GetListJsonObjectActivity> {
         ),
         body: Container(
           padding: EdgeInsets.all(16.0),
-          child: FutureBuilder<List<UserJsonObject>>(
-              future: getListUsers,
-              builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    {
-                      // here we are showing loading view in waiting state.
-                      return loadingView();
-                    }
-                  case ConnectionState.active:
-                    {
-                      break;
-                    }
-                  case ConnectionState.done:
-                    {
-                      // in done state we will handle the snapshot data.
-                      // if snapshot has data show list else set you message.
-                      if (snapshot.data != null) {
-                        if (snapshot.data.length > 0) {
-                          // here inflate data list
-                          return ListView.builder(
-                              itemCount: snapshot.data.length,
-                              itemBuilder: (context, index) {
-                                return generateColum(
-                                    snapshot.data[index]);
-                              });
-                        }else {
-                          // display error message if your list or data is null.
-                          return noDataView("No data found");
-                        }
-                      } else if (snapshot.hasError) {
-                        // display your message if snapshot has error.
-                        return noDataView("Something went wrong");
-                      } else {
-                        return noDataView("Something went wrong");
-                      }
-                      break;
-                    }
-                  case ConnectionState.none:
-                    {}
-                }
-                return loadingView();
-              }),
+          child: View(),
         ),
       ),
     );
+  }
+
+  FutureBuilder<List<UserJsonObject>> View() {
+    return FutureBuilder<List<UserJsonObject>>(
+            future: getListUsers,
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  {
+                    // here we are showing loading view in waiting state.
+                    return loadingView();
+                  }
+                case ConnectionState.active:
+                  {
+                    break;
+                  }
+                case ConnectionState.done:
+                  {
+                    // in done state we will handle the snapshot data.
+                    // if snapshot has data show list else set you message.
+                    if (snapshot.data != null) {
+                      if (snapshot.data.length > 0) {
+                        // here inflate data list
+                        return ListView.builder(
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context, index) {
+                              return generateColum(
+                                  snapshot.data[index]);
+                            });
+                      }else {
+                        // display error message if your list or data is null.
+                        return noDataView("No data found");
+                      }
+                    } else if (snapshot.hasError) {
+                      // display your message if snapshot has error.
+                      return noDataView("Something went wrong");
+                    } else {
+                      return noDataView("Something went wrong");
+                    }
+                    break;
+                  }
+                case ConnectionState.none:
+                  {}
+              }
+              return loadingView();
+            });
   }
 
   Widget loadingView() => Center(

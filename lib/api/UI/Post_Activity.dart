@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/api/model/post_result_model.dart';
 
-void main() => runApp(Api());
+void main() => runApp(Post_Activity());
 
-class Api extends StatefulWidget {
+class Post_Activity extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<Api> {
+class _State extends State<Post_Activity> {
   PostResult postResult = null;
 
   @override
